@@ -1399,8 +1399,13 @@ async function loadCharacterVoiceRecords(characterId) {
                             🎙️ ${escapeHtml(record.voiceActor)} | 📅 ${new Date(record.createdAt).toLocaleDateString('ru-RU')}
                         </div>
                     </div>
-                    ${(record.voiceActor === window.userData.username || window.userData.isAdmin) ?
-                        `<button class="delete-voice-btn" onclick="deleteVoiceRecord(${record.id})"><i class="fas fa-trash"></i> Удалить</button>` : ''}
+                    <div class="voice-record-actions">
+                        <button class="download-voice-btn" onclick="downloadVoiceRecord('${record.audioUrl}', '${escapeHtml(record.title)}')">
+                            <i class="fas fa-download"></i> Скачать
+                        </button>
+                        ${(record.voiceActor === window.userData.username || window.userData.isAdmin) ?
+                            `<button class="delete-voice-btn" onclick="deleteVoiceRecord(${record.id})"><i class="fas fa-trash"></i> Удалить</button>` : ''}
+                    </div>
                 </div>
             `).join('');
         } else {
@@ -2528,6 +2533,52 @@ async function deleteIdea(ideaId) {
     } catch (error) {
         console.error('Ошибка:', error);
         showNotification('❌ Ошибка соединения', 'error');
+    }
+}
+
+// ========== СКАЧИВАНИЕ ОЗВУЧКИ ==========
+function downloadVoiceRecord(audioUrl, title) {
+    if (!audioUrl) {
+        showNotification('❌ Нет ссылки на аудиофайл', 'error');
+        return;
+    }
+
+    const fileName = title
+        ? `${title.replace(/[^a-zA-Zа-яА-Я0-9]/g, '_')}.mp3`
+        : `voice_record_${Date.now()}.mp3`;
+
+    showNotification('⏳ Начинаем скачивание...', 'success');
+
+    if (audioUrl.includes('cloudinary.com') || audioUrl.includes('res.cloudinary.com')) {
+        fetch(audioUrl)
+            .then(response => {
+                if (!response.ok) throw new Error('Ошибка загрузки файла');
+                return response.blob();
+            })
+            .then(blob => {
+                const blobUrl = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = blobUrl;
+                a.download = fileName;
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(blobUrl);
+                showNotification('✅ Скачивание началось!', 'success');
+            })
+            .catch(error => {
+                console.error('Ошибка скачивания:', error);
+                window.open(audioUrl, '_blank');
+                showNotification('⚠️ Аудио открыто в новой вкладке', 'error');
+            });
+    } else {
+        const a = document.createElement('a');
+        a.href = audioUrl;
+        a.download = fileName;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        showNotification('✅ Скачивание началось!', 'success');
     }
 }
 
