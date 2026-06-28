@@ -3253,73 +3253,53 @@ audio {
 }
 
 /* ============================================================
-   КНОПКА СКАЧИВАНИЯ ОЗВУЧКИ
+   КНОПКИ ОЗВУЧЕК (ВЕРТИКАЛЬНО)
    ============================================================ */
 
-/* Контейнер для кнопок в блоке озвучки */
 .voice-record-actions {
     display: flex;
-    gap: 8px;
-    align-items: center;
-    flex-wrap: wrap;
+    flex-direction: column;
+    gap: 6px;
+    align-items: stretch;
     margin-top: 8px;
+    min-width: 80px;
 }
 
-/* Кнопка "Скачать" — синяя */
-.download-voice-btn {
+.voice-record-actions .download-voice-btn,
+.voice-record-actions .delete-voice-btn {
+    width: 100% !important;
+    justify-content: center !important;
+    padding: 6px 10px !important;
+    font-size: 0.7rem !important;
+    border-radius: 6px !important;
+    transition: all 0.3s ease !important;
+}
+
+.voice-record-actions .download-voice-btn {
     background: linear-gradient(135deg, #3b82f6, #2563eb) !important;
     border: none !important;
-    padding: 6px 14px !important;
-    border-radius: 8px !important;
     color: white !important;
-    cursor: pointer !important;
-    font-size: 0.75rem !important;
-    font-weight: 500 !important;
-    transition: all 0.3s ease !important;
-    display: inline-flex !important;
-    align-items: center !important;
-    gap: 6px !important;
-    font-family: 'Inter', sans-serif !important;
 }
 
-.download-voice-btn:hover {
-    transform: translateY(-2px) !important;
-    box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4) !important;
+.voice-record-actions .download-voice-btn:hover {
     background: linear-gradient(135deg, #5b8ef6, #2563eb) !important;
+    transform: translateY(-1px) !important;
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3) !important;
 }
 
-.download-voice-btn:active {
-    transform: translateY(0px) !important;
-}
-
-.download-voice-btn i {
-    font-size: 0.8rem;
-}
-
-/* Кнопка "Удалить" — красная (оставляем как есть) */
-.delete-voice-btn {
+.voice-record-actions .delete-voice-btn {
     background: rgba(239, 68, 68, 0.15) !important;
     border: 1px solid #ef4444 !important;
-    padding: 6px 14px !important;
-    border-radius: 8px !important;
     color: #f87171 !important;
-    cursor: pointer !important;
-    font-size: 0.75rem !important;
-    font-weight: 500 !important;
-    transition: all 0.3s ease !important;
-    display: inline-flex !important;
-    align-items: center !important;
-    gap: 6px !important;
-    font-family: 'Inter', sans-serif !important;
 }
 
-.delete-voice-btn:hover {
+.voice-record-actions .delete-voice-btn:hover {
     background: rgba(239, 68, 68, 0.3) !important;
-    transform: translateY(-2px) !important;
+    transform: translateY(-1px) !important;
 }
 
-.delete-voice-btn i {
-    font-size: 0.8rem;
+.voice-record-actions i {
+    font-size: 0.7rem !important;
 }
 
 /* ============================================================
@@ -3328,14 +3308,16 @@ audio {
 
 @media (max-width: 600px) {
     .voice-record-actions {
+        flex-direction: row;
         width: 100%;
         justify-content: flex-end;
-        margin-top: 8px;
+        gap: 8px;
     }
 
-    .download-voice-btn,
-    .delete-voice-btn {
-        padding: 8px 12px !important;
+    .voice-record-actions .download-voice-btn,
+    .voice-record-actions .delete-voice-btn {
+        width: auto !important;
+        padding: 8px 14px !important;
         font-size: 0.7rem !important;
     }
 }
