@@ -26,17 +26,20 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeHttpRequests(auth -> auth
-                        // Публичные страницы и ресурсы
+                        // Публичные страницы
                         .requestMatchers("/", "/login", "/styles/**", "/scripts/**",
                                 "/css/**", "/js/**", "/images/**").permitAll()
-                        // Публичные API эндпоинты
+                        // Публичные API
                         .requestMatchers("/api/register-request").permitAll()
                         .requestMatchers("/api/public-users").permitAll()
                         .requestMatchers("/api/online-users").permitAll()
                         .requestMatchers("/api/heartbeat").permitAll()
                         .requestMatchers("/api/auth/**").permitAll()
+                        // 👇 ДОБАВЬ ЭТО!
+                        .requestMatchers("/profile/**").authenticated()  // <-- Явно защищаем профиль
+                        .requestMatchers("/hub/**").authenticated()      // <-- И хаб
                         .requestMatchers("/api/current-user").authenticated()
-                        // Админские эндпоинты
+                        // Админка
                         .requestMatchers("/admin/**").hasRole("ADMIN")
                         .requestMatchers("/api/admin/**").hasRole("ADMIN")
                         // Всё остальное требует аутентификации
