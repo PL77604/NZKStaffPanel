@@ -1,0 +1,193 @@
+/* ========== ФОРМА ВЫДАЧИ ТАСКА ========== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: linear-gradient(135deg, #0a0c15 0%, #0f111f 100%);
+    color: #eef2ff;
+}
+
+.hub-wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.page-wrapper {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+}
+
+.task-card {
+    max-width: 700px;
+    width: 100%;
+    background: #111521;
+    border-radius: 1.5rem;
+    border: 1px solid #2a2f48;
+    overflow: hidden;
+}
+
+.card-header {
+    background: linear-gradient(135deg, #1a1f35, #111521);
+    padding: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #2a2f48;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.header-title {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+}
+
+.header-title i {
+    font-size: 1.5rem;
+    color: #ffda88;
+}
+
+.header-title h2 {
+    font-size: 1.3rem;
+    color: white;
+}
+
+.builder-badge {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    padding: 0.4rem 1rem;
+    border-radius: 2rem;
+    font-size: 0.8rem;
+}
+
+.card-body {
+    padding: 1.5rem;
+}
+
+.form-group {
+    margin-bottom: 1.2rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: #a0a8c0;
+    font-size: 0.85rem;
+}
+
+.form-group label i {
+    margin-right: 0.4rem;
+    color: #667eea;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    background: #1a1f35;
+    border: 1px solid #2f365b;
+    border-radius: 0.8rem;
+    color: white;
+    font-size: 0.9rem;
+    transition: all 0.2s;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #667eea;
+    box-shadow: 0 0 0 2px rgba(102, 126, 234, 0.2);
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+.row-2cols {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+.priority-select {
+    cursor: pointer;
+}
+
+.priority-select option[value="HIGH"] { background: #ef4444; color: white; }
+.priority-select option[value="MEDIUM"] { background: #f59e0b; color: #1a1a2e; }
+.priority-select option[value="LOW"] { background: #22c55e; color: #1a1a2e; }
+
+.form-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.btn-outline {
+    flex: 1;
+    padding: 0.8rem;
+    background: transparent;
+    border: 1px solid #2f365b;
+    border-radius: 0.8rem;
+    color: #a0a8c0;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn-outline:hover {
+    background: rgba(102, 126, 234, 0.1);
+    border-color: #667eea;
+    color: white;
+}
+
+.btn-primary {
+    flex: 2;
+    padding: 0.8rem;
+    background: linear-gradient(135deg, #22c55e, #16a34a);
+    border: none;
+    border-radius: 0.8rem;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(34, 197, 94, 0.3);
+}
+
+.notification {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 12px 20px;
+    border-radius: 10px;
+    z-index: 9999;
+    animation: slideIn 0.3s ease;
+}
+
+@keyframes slideIn {
+    from { transform: translateX(100%); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
+
+@media (max-width: 600px) {
+    .page-wrapper { padding: 1rem; }
+    .card-header { flex-direction: column; text-align: center; }
+    .row-2cols { grid-template-columns: 1fr; }
+    .form-actions { flex-direction: column; }
+}

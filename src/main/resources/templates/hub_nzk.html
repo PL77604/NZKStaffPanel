@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+	<title>NZK StaffPanel</title>
+	<meta name="_csrf" th:content="${_csrf.token}"/>
+	<meta name="_csrf_header" th:content="${_csrf.headerName}"/>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link
+			href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap"
+			rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+	<link rel="stylesheet" th:href="@{/styles/hub_style.css}">
+	<link rel="stylesheet" th:href="@{/styles/blocks/header.css}">
+	<link rel="stylesheet" th:href="@{/styles/blocks/footer.css}">
+</head>
+
+<body>
+<div class="hub-wrapper">
+	<header th:replace="~{blocks/header :: header}"></header>
+
+	<main class="hub-main">
+		<!-- Панель 1: Обзор -->
+		<div class="tab-content active" id="dashboard-tab">
+			<div class="welcome-section">
+				<h1><i class="fas fa-rocket"></i> Добро пожаловать, <span th:text="${username}">User</span>!</h1>
+				<p>Мотивационная панель для строителей, актёров озвучки, сценаристов.</p>
+				<div id="adminWelcomeMessage" class="admin-message" style="display: none; padding: 10px; border-radius: 10px; margin-top: 10px; background: rgba(102, 126, 234, 0.2);">
+					<i class="fas fa-crown"></i> <span id="adminWelcomeText">Приветствую, Администратор сан.!</span>
+				</div>
+			</div>
+
+			<div class="stats-grid">
+				<div class="stat-card">
+					<div class="stat-icon"><i class="fas fa-tasks"></i></div>
+					<div class="stat-info">
+						<span class="stat-value" id="tasksCount">0</span>
+						<span class="stat-label">Активных тасков</span>
+					</div>
+				</div>
+				<div class="stat-card">
+					<div class="stat-icon"><i class="fas fa-hard-hat"></i></div>
+					<div class="stat-info">
+						<span class="stat-value" id="buildIdeasCount">0</span>
+						<span class="stat-label">Идей для построек</span>
+					</div>
+				</div>
+				<div class="stat-card">
+					<div class="stat-icon"><i class="fas fa-globe"></i></div>
+					<div class="stat-info">
+						<span class="stat-value" id="siteIdeasCount">0</span>
+						<span class="stat-label">Идей для сайта</span>
+					</div>
+				</div>
+				<div class="stat-card">
+					<div class="stat-icon"><i class="fas fa-users"></i></div>
+					<div class="stat-info">
+						<span class="stat-value" id="usersCount">0</span>
+						<span class="stat-label">Всего участников</span>
+					</div>
+				</div>
+			</div>
+
+			<!-- СЕКЦИЯ УЧАСТНИКОВ ПО РОЛЯМ -->
+			<div class="team-section">
+				<h2 class="section-title"><i class="fas fa-users-viewfinder"></i> Команда NZK</h2>
+				<div id="teamMembersContainer" class="team-roles-grid">
+					<div class="loading-spinner">Загрузка команды...</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Панель 2: Строители -->
+		<div class="tab-content" id="builders-tab">
+			<div class="panel-header">
+				<h2><i class="fas fa-hard-hat"></i> Управление задачами строителей</h2>
+				<button class="add-task-btn admin-only" onclick="window.location.href='/give_tusk_form'">
+					<i class="fas fa-plus"></i> Выдать таск
+				</button>
+			</div>
+
+			<!-- Список строителей -->
+			<div class="builders-list-section">
+				<h3><i class="fas fa-users"></i> Строители</h3>
+				<div id="buildersListContainer" class="builders-grid">
+					<div class="loading-spinner">Загрузка списка строителей...</div>
+				</div>
+			</div>
+
+			<!-- Контейнер для фильтра (JS добавит сюда элементы) -->
+			<div id="filterContainer"></div>
+
+			<!-- Список активных задач -->
+			<div class="tasks-list-section">
+				<h3><i class="fas fa-tasks"></i> Задачи</h3>
+				<div id="tasksContainer" class="tasks-container">
+					<div class="loading-spinner">Загрузка задач...</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Панель 3: Актёры озвучки и персонажи -->
+		<div class="tab-content" id="voice-actors-tab">
+			<div class="panel-header">
+				<h2><i class="fas fa-microphone-alt"></i> Актёры озвучки и персонажи</h2>
+				<button class="add-voice-actor-btn admin-only" id="addCharacterBtn" style="display: none;">
+					<i class="fas fa-user-plus"></i> Создать персонажа
+				</button>
+			</div>
+
+			<div class="voice-actors-layout">
+
+				<!-- Левая колонка - список актёров -->
+				<div class="voice-actors-sidebar">
+					<!-- ДОБАВЬ ЭТУ ПЛАШКУ -->
+					<div class="all-characters-plate" onclick="showAllCharacters()">
+						<div class="all-characters-icon">
+							<i class="fas fa-mask"></i>
+						</div>
+						<div class="all-characters-info">
+							<div class="all-characters-title">Все персонажи</div>
+							<div class="all-characters-count" id="allCharactersCount">0 персонажей</div>
+						</div>
+						<i class="fas fa-chevron-right"></i>
+					</div>
+					<h3><i class="fas fa-users"></i> Актёры озвучки</h3>
+					<div id="voiceActorsList" class="voice-actors-list-container">
+						<div class="loading-spinner">Загрузка актёров...</div>
+					</div>
+
+				</div>
+
+				<!-- Правая колонка - персонажи -->
+				<div class="characters-content">
+					<div class="characters-header">
+						<h3><i class="fas fa-mask"></i> Персонажи</h3>
+						<button class="assign-character-btn admin-only" id="assignCharacterBtn" style="display: none;">
+							<i class="fas fa-user-plus"></i> Выдать персонажа
+						</button>
+					</div>
+					<div id="charactersList" class="characters-grid">
+						<div class="loading-spinner">Загрузка персонажей...</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Модальное окно для просмотра персонажа -->
+			<div id="characterModal" class="modal" style="display: none;">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h3 id="modalCharacterName"></h3>
+						<button class="modal-close-btn" onclick="closeModal()">&times;</button>
+					</div>
+					<div class="modal-body">
+						<div class="character-info-modal">
+							<div class="character-info-row">
+								<i class="fas fa-align-left"></i>
+								<p id="modalCharacterDescription"></p>
+							</div>
+							<div class="character-info-row">
+								<i class="fas fa-user"></i>
+								<p><strong>Актёр:</strong> <span id="modalCharacterActor"></span></p>
+							</div>
+							<div id="adminCharacterActions" style="display: none; margin-top: 10px;">
+								<button class="btn-danger" id="unassignCharacterBtn" style="font-size: 0.8rem;">
+									<i class="fas fa-user-slash"></i> Забрать персонажа
+								</button>
+								<button class="btn-secondary" id="reassignCharacterBtn" style="font-size: 0.8rem;">
+									<i class="fas fa-exchange-alt"></i> Сменить актёра
+								</button>
+								<button class="btn-danger" id="deleteCharacterBtn" style="font-size: 0.8rem;">
+									<i class="fas fa-trash"></i> Удалить персонажа
+								</button>
+							</div>
+						</div>
+
+						<h4><i class="fas fa-headphones"></i> Озвучки персонажа</h4>
+						<div id="modalVoiceRecords" class="voice-records-list">
+							<div class="loading-spinner">Загрузка озвучек...</div>
+						</div>
+
+						<div id="addVoiceRecordForm" class="add-voice-form" style="display: none;">
+							<h5><i class="fas fa-microphone-alt"></i> Добавить озвучку</h5>
+							<input type="text" id="voiceTitle" placeholder="Название озвучки" class="form-input">
+							<textarea id="voiceDescription" placeholder="Описание (необязательно)" class="form-textarea"></textarea>
+							<div class="audio-upload-area">
+								<label for="voiceAudioFile" class="audio-upload-label">
+									<i class="fas fa-cloud-upload-alt"></i>
+									<span>Выбрать аудиофайл</span>
+								</label>
+								<input type="file" id="voiceAudioFile" accept="audio/*" style="display: none;">
+								<div id="audioFileName" class="audio-file-name" style="display: none;"></div>
+								<input type="hidden" id="voiceAudioUrl">
+								<p style="font-size: 0.7rem; color: #7c8bd6; margin-top: 5px;">Максимальный размер файла: 2 МБ</p>
+							</div>
+							<button id="saveVoiceRecordBtn" class="btn-primary" style="width: 100%;">
+								<i class="fas fa-save"></i> Сохранить озвучку
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Модальное окно для смены актёра -->
+			<div id="reassignCharacterModal" class="modal" style="display: none;">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h3><i class="fas fa-exchange-alt"></i> Сменить актёра</h3>
+						<button class="modal-close-btn" onclick="closeReassignModal()">&times;</button>
+					</div>
+					<div class="modal-body">
+						<div class="modal-form">
+							<select id="reassignActorSelect" class="form-input">
+								<option value="">-- Выберите актёра --</option>
+							</select>
+							<div class="modal-buttons">
+								<button class="btn-primary" onclick="confirmReassign()">Сохранить</button>
+								<button class="btn-secondary" onclick="closeReassignModal()">Отмена</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Панель 4: Идеи -->
+		<div class="tab-content" id="ideas-tab">
+			<div class="panel-header">
+				<h2><i class="fas fa-lightbulb"></i> Банк идей</h2>
+				<div class="idea-buttons">
+					<button class="new-idea-btn" onclick="openCreateIdeaModal('BUILD')">
+						<i class="fas fa-hard-hat"></i> Идея для постройки
+					</button>
+					<button class="new-idea-btn site-idea" onclick="openCreateIdeaModal('SITE')">
+						<i class="fas fa-globe"></i> Идея для сайта
+					</button>
+				</div>
+			</div>
+
+			<!-- Вкладки для переключения между типами идей -->
+			<div class="idea-tabs">
+				<button class="idea-tab active" data-idea-type="BUILD" onclick="switchIdeaType('BUILD')">
+					<i class="fas fa-hard-hat"></i> Постройки
+				</button>
+				<button class="idea-tab" data-idea-type="SITE" onclick="switchIdeaType('SITE')">
+					<i class="fas fa-globe"></i> Улучшение сайта
+				</button>
+				<button class="idea-tab admin-only" data-idea-type="PENDING" onclick="switchIdeaType('PENDING')" style="display: none;">
+					<i class="fas fa-clock"></i> На модерации
+					<span id="pendingBadge" class="pending-badge">0</span>
+				</button>
+			</div>
+
+			<!-- Контейнер для идей -->
+			<div id="ideasContainer" class="ideas-feed">
+				<div class="loading-spinner">Загрузка идей...</div>
+			</div>
+		</div>
+
+		<!-- Модальное окно для создания идеи -->
+		<div id="createIdeaModal" class="modal" style="display: none;">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h3 id="createIdeaModalTitle"><i class="fas fa-plus"></i> Добавить идею</h3>
+					<button class="modal-close-btn" onclick="closeCreateIdeaModal()">&times;</button>
+				</div>
+				<div class="modal-body">
+					<div class="modal-form">
+						<input type="text" id="ideaTitle" placeholder="Название идеи *" class="form-input">
+						<textarea id="ideaDescription" placeholder="Описание идеи *" class="form-textarea" rows="5"></textarea>
+						<div class="modal-buttons">
+							<button class="btn-primary" onclick="createIdea()">Отправить на модерацию</button>
+							<button class="btn-secondary" onclick="closeCreateIdeaModal()">Отмена</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Панель 5: Сценарии -->
+		<div class="tab-content" id="scripts-tab">  <!-- поменяй id с audio-tab на scripts-tab -->
+			<div class="panel-header">
+				<h2><i class="fas fa-file-alt"></i> Сценаристы и сценарии</h2>
+				<button class="add-script-btn admin-only" id="addScriptBtn" style="display: none;">
+					<i class="fas fa-plus"></i> Добавить сценарий
+				</button>
+			</div>
+
+			<div class="scripts-layout">
+				<!-- Левая колонка - список сценаристов -->
+				<div class="scripts-sidebar">
+					<h3><i class="fas fa-users"></i> Сценаристы</h3>
+					<div id="screenwritersList" class="screenwriters-list-container">
+						<div class="loading-spinner">Загрузка сценаристов...</div>
+					</div>
+				</div>
+
+				<!-- Правая колонка - список сценариев -->
+				<div class="scripts-content">
+					<div class="scripts-header">
+						<h3><i class="fas fa-scroll"></i> Сценарии</h3>
+					</div>
+					<div id="scriptsList" class="scripts-grid">
+						<div class="loading-spinner">Загрузка сценариев...</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Модальное окно для создания сценария -->
+		<div id="scriptModal" class="modal" style="display: none;">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h3 id="scriptModalTitle"><i class="fas fa-plus"></i> Добавить сценарий</h3>
+					<button class="modal-close-btn" onclick="closeScriptModal()">&times;</button>
+				</div>
+				<div class="modal-body">
+					<div class="modal-form">
+						<input type="text" id="scriptTitle" placeholder="Название сценария *" class="form-input">
+						<textarea id="scriptDescription" placeholder="Описание сценария" class="form-textarea"></textarea>
+						<input type="url" id="scriptGoogleDocUrl" placeholder="Ссылка на Google Документ *" class="form-input">
+
+						<label style="color: #a0a8c0; margin-bottom: 0.5rem; display: block;">
+							<i class="fas fa-users"></i> Выбрать сценаристов (можно несколько):
+						</label>
+						<div class="multi-select-container">
+							<div id="scriptAssigneeCheckboxes" class="checkboxes-group">
+								<!-- Чекбоксы будут добавлены через JS -->
+							</div>
+						</div>
+
+						<div class="modal-buttons">
+							<button class="btn-primary" onclick="saveScript()">Сохранить</button>
+							<button class="btn-secondary" onclick="closeScriptModal()">Отмена</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Модальное окно для редактирования сценаристов -->
+		<div id="editScriptModal" class="modal" style="display: none;">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h3 id="editScriptModalTitle"><i class="fas fa-edit"></i> Редактировать сценарий</h3>
+					<button class="modal-close-btn" onclick="closeEditScriptModal()">&times;</button>
+				</div>
+				<div class="modal-body">
+					<div class="modal-form">
+						<label style="color: #a0a8c0; margin-bottom: 0.5rem; display: block;">
+							<i class="fas fa-users"></i> Выбрать сценаристов (можно несколько):
+						</label>
+						<div class="multi-select-container">
+							<div id="editScriptAssigneeCheckboxes" class="checkboxes-group">
+								<!-- Чекбоксы будут добавлены через JS -->
+							</div>
+						</div>
+						<input type="hidden" id="editScriptId">
+						<div class="modal-buttons">
+							<button class="btn-primary" onclick="saveScriptAssignees()">Сохранить</button>
+							<button class="btn-secondary" onclick="closeEditScriptModal()">Отмена</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Панель: Заявки на регистрацию (только для админов) -->
+		<div th:if="${isAdmin}" class="tab-content" id="registration-requests-tab">
+			<div class="panel-header">
+				<h2><i class="fas fa-clipboard-list"></i> Заявки на регистрацию</h2>
+				<button class="refresh-requests-btn" id="refreshRequestsBtn">
+					<i class="fas fa-sync-alt"></i> Обновить
+				</button>
+			</div>
+			<div id="requestsContainer" class="requests-container">
+				<div class="loading-spinner">Загрузка заявок...</div>
+			</div>
+		</div>
+
+		<!-- Панель 7: Управление пользователями (ТОЛЬКО ДЛЯ АДМИНОВ) -->
+		<div th:if="${isAdmin}" class="tab-content" id="users-management-tab">
+			<div class="panel-header">
+				<h2><i class="fas fa-users-gear"></i> Управление пользователями</h2>
+				<button class="refresh-users-btn" id="refreshUsersBtn">
+					<i class="fas fa-sync-alt"></i> Обновить
+				</button>
+			</div>
+			<div id="usersManagementContainer" class="users-management-container">
+				<div class="loading-spinner">Загрузка пользователей...</div>
+			</div>
+		</div>
+	</main>
+	<div th:replace="~{blocks/footer :: footer}"></div>
+</div>
+
+<script th:inline="javascript">
+	/*<![CDATA[*/
+    window.userData = {
+        username: /*[[${username}]]*/ 'Guest',
+        isAdmin: /*[[${isAdmin}]]*/ false
+    };
+    /*]]>*/
+</script>
+<script th:src="@{/scripts/hub_script.js}"></script>
+</body>
+
+</html>

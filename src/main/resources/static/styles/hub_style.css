@@ -1,0 +1,3253 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: linear-gradient(135deg, #0a0c15 0%, #0f111f 100%);
+    color: #eef2ff;
+    line-height: 1.5;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ========== ГЛАВНЫЙ КОНТЕЙНЕР ========== */
+.hub-wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* ========== MAIN ========== */
+.hub-main {
+    flex: 1 0 auto;
+    max-width: 1400px;
+    margin: 0 auto;
+    width: 100%;
+    padding: 2rem;
+}
+
+/* ========== FOOTER ========== */
+.hub-footer {
+    background: #070a14;
+    border-top: 1px solid #1e243f;
+    margin-top: auto;
+    width: 100%;
+    flex-shrink: 0;
+}
+
+.footer-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 2rem 2rem 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 2rem;
+}
+
+.footer-col {
+    flex: 1;
+    min-width: 180px;
+}
+
+.footer-logo {
+    font-size: 1.4rem;
+    font-weight: 800;
+    background: linear-gradient(120deg, #cddcff, #8d9eff);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    margin-bottom: 0.5rem;
+}
+
+.footer-col p {
+    font-size: 0.8rem;
+    color: #9ea9da;
+    line-height: 1.4;
+}
+
+.footer-col h4 {
+    margin-bottom: 0.8rem;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.footer-col ul {
+    list-style: none;
+}
+
+.footer-col li {
+    margin-bottom: 0.5rem;
+    font-size: 0.8rem;
+    color: #b5c0eb;
+}
+
+.footer-col a {
+    color: #b5c0eb;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.footer-col a:hover {
+    color: white;
+    text-decoration: underline;
+}
+
+.footer-bottom {
+    text-align: center;
+    padding: 1rem;
+    border-top: 1px solid #1a1f36;
+    font-size: 0.7rem;
+    color: #7a86b5;
+}
+
+/* ========== ТАБЫ ========== */
+.tab-content {
+    display: none;
+    animation: fadeSlide 0.3s ease;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+@keyframes fadeSlide {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ========== ПРИВЕТСТВИЕ ========== */
+.welcome-section {
+    background: rgba(31, 38, 70, 0.5);
+    border-radius: 1.5rem;
+    padding: 1.8rem;
+    margin-bottom: 2rem;
+    border: 1px solid rgba(100, 120, 200, 0.3);
+}
+
+.welcome-section h1 {
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    flex-wrap: wrap;
+}
+
+.welcome-section p {
+    color: #a0a8c0;
+    font-size: 0.95rem;
+}
+
+/* ========== СТАТИСТИКА ========== */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.2rem;
+    margin-bottom: 2rem;
+}
+
+.stat-card {
+    background: #111521;
+    border-radius: 1.2rem;
+    padding: 1.2rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    border: 1px solid #2a2f48;
+    transition: all 0.2s;
+}
+
+.stat-card:hover {
+    transform: translateY(-3px);
+    border-color: #667eea;
+}
+
+.stat-icon {
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, #2c3f94, #1a266a);
+    border-radius: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    color: #ffda88;
+}
+
+.stat-info {
+    flex: 1;
+}
+
+.stat-value {
+    font-size: 1.5rem;
+    font-weight: 800;
+    line-height: 1.2;
+}
+
+.stat-label {
+    font-size: 0.7rem;
+    color: #7c8bd6;
+}
+
+.stat-sub {
+    font-size: 0.65rem;
+    color: #5a668a;
+    margin-top: 0.2rem;
+}
+
+/* ========== ПАНЕЛИ ========== */
+.panel-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 1.5rem;
+    gap: 1rem;
+}
+
+.panel-header h2 {
+    font-size: 1.4rem;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+}
+
+.add-task-btn, .upload-audio-btn, .new-idea-btn {
+    background: linear-gradient(135deg, #3b4ecf, #562de0);
+    border: none;
+    padding: 0.5rem 1.2rem;
+    border-radius: 2rem;
+    font-weight: 600;
+    color: white;
+    cursor: pointer;
+    transition: 0.2s;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+}
+
+.add-task-btn:hover, .upload-audio-btn:hover, .new-idea-btn:hover {
+    transform: scale(1.02);
+    opacity: 0.9;
+}
+
+/* ========== ЗАДАЧИ ========== */
+.tasks-board {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.task-column {
+    flex: 1;
+    min-width: 280px;
+    background: #0e1120;
+    border-radius: 1.2rem;
+    padding: 1rem;
+}
+
+.column-title {
+    font-weight: 700;
+    padding: 0.5rem 0;
+    border-bottom: 2px solid #33416e;
+    margin-bottom: 1rem;
+}
+
+.task-card {
+    background: #161c30;
+    border-radius: 0.8rem;
+    padding: 1rem;
+    margin-bottom: 0.8rem;
+    border-left: 3px solid #f59e0b;
+}
+
+.task-card.completed {
+    border-left-color: #22c55e;
+    opacity: 0.7;
+}
+
+.task-title {
+    font-weight: 700;
+    margin-bottom: 0.3rem;
+}
+
+.task-assignee {
+    font-size: 0.8rem;
+    color: #9ca9db;
+}
+
+.complete-task {
+    margin-top: 0.5rem;
+    padding: 4px 10px;
+    background: #22c55e;
+    border: none;
+    border-radius: 0.5rem;
+    color: white;
+    cursor: pointer;
+    font-size: 0.75rem;
+}
+
+/* ========== АУДИО ========== */
+.audio-collector {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.audio-player-list {
+    flex: 2;
+    min-width: 260px;
+}
+
+.audio-item {
+    background: #161c30;
+    border-radius: 0.8rem;
+    padding: 1rem;
+    margin-bottom: 0.8rem;
+}
+
+.audio-info {
+    margin-bottom: 0.5rem;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+audio {
+    width: 100%;
+    max-width: 300px;
+    height: 36px;
+}
+
+.voice-actors-list {
+    flex: 1;
+    background: #0e1120;
+    border-radius: 1.2rem;
+    padding: 1.2rem;
+}
+
+.voice-actors-list h4 {
+    margin-bottom: 1rem;
+    font-size: 1rem;
+}
+
+.voice-actors-list ul {
+    list-style: none;
+}
+
+.voice-actors-list li {
+    padding: 0.4rem 0;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.85rem;
+}
+
+/* ========== ИДЕИ ========== */
+.ideas-feed {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.2rem;
+}
+
+/* ========== ОПТИМИЗАЦИЯ ДЛЯ ДЛИННОГО ТЕКСТА В КАРТОЧКАХ ИДЕЙ ========== */
+
+/* Карточка идеи - фиксированная высота с прокруткой при необходимости */
+.idea-card {
+    max-height: 350px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    position: relative;
+    transition: all 0.2s ease;
+}
+
+/* Описание идеи - с прокруткой если текст длинный */
+.idea-description {
+    font-size: 0.8rem;
+    color: #a0a8c0;
+    line-height: 1.4;
+    margin-bottom: 0.8rem;
+    max-height: 100px;
+    overflow-y: auto;
+    padding-right: 4px;
+    word-wrap: break-word;
+    white-space: normal;
+}
+
+/* Стилизация скроллбара для описания */
+.idea-description::-webkit-scrollbar {
+    width: 3px;
+}
+
+.idea-description::-webkit-scrollbar-track {
+    background: #1a1f35;
+    border-radius: 3px;
+}
+
+.idea-description::-webkit-scrollbar-thumb {
+    background: #667eea;
+    border-radius: 3px;
+}
+
+/* Название идеи - обрезка с многоточием если слишком длинное */
+.idea-title {
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: white;
+    word-wrap: break-word;
+    white-space: normal;
+    max-height: 60px;
+    overflow-y: auto;
+    line-height: 1.3;
+}
+
+/* Если название слишком длинное - добавляем прокрутку */
+.idea-title-scroll {
+    max-height: 60px;
+    overflow-y: auto;
+}
+
+/* Автоматическое сжатие текста через многоточие (альтернативный вариант) */
+.idea-title-ellipsis {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.idea-description-ellipsis {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* При наведении показываем полный текст (для варианта с многоточием) */
+.idea-card:hover .idea-title-ellipsis,
+.idea-card:hover .idea-description-ellipsis {
+    display: block;
+    max-height: none;
+    overflow: visible;
+    white-space: normal;
+}
+
+/* Мета информация - фиксируем внизу */
+.idea-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.7rem;
+    color: #7c8bd6;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: auto;
+    padding-top: 0.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Действия админа - поверх карточки, не мешают тексту */
+.idea-actions {
+    position: absolute;
+    top: 0.8rem;
+    right: 0.8rem;
+    display: flex;
+    gap: 0.3rem;
+    z-index: 10;
+}
+
+/* Плашка типа идеи */
+.idea-type-plate {
+    display: inline-block;
+    font-size: 0.7rem;
+    padding: 0.25rem 0.8rem;
+    border-radius: 1rem;
+    margin-bottom: 0.8rem;
+    font-weight: 500;
+    width: fit-content;
+}
+
+/* Для очень длинных слов */
+.idea-title, .idea-description {
+    word-break: break-word;
+    overflow-wrap: break-word;
+    hyphens: auto;
+}
+
+/* Альтернатива - фиксированная высота карточки с прокруткой всего контента */
+.idea-card-scrollable {
+    max-height: 400px;
+    overflow-y: auto;
+    display: block;
+}
+
+.idea-card-scrollable::-webkit-scrollbar {
+    width: 5px;
+}
+
+.idea-card-scrollable::-webkit-scrollbar-track {
+    background: #1a1f35;
+    border-radius: 5px;
+}
+
+.idea-card-scrollable::-webkit-scrollbar-thumb {
+    background: #667eea;
+    border-radius: 5px;
+}
+
+.idea-meta {
+    font-size: 0.7rem;
+    color: #7c8bd6;
+    display: flex;
+    justify-content: space-between;
+}
+
+.like-btn {
+    cursor: pointer;
+}
+
+.like-btn:hover {
+    color: #ef4444;
+}
+
+/* ========== АУДИО БИБЛИОТЕКА ========== */
+.audio-library {
+    background: #0e1120;
+    border-radius: 1rem;
+    padding: 1rem;
+    overflow-x: auto;
+}
+
+.audio-table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 500px;
+}
+
+.audio-table th, .audio-table td {
+    text-align: left;
+    padding: 0.7rem 0.5rem;
+    border-bottom: 1px solid #242b48;
+}
+
+.audio-table th {
+    color: #7c8bd6;
+    font-weight: 600;
+}
+
+/* ========== ФОРМА РЕГИСТРАЦИИ ========== */
+.register-new-person-container {
+    background: #0e1120;
+    border-radius: 1.2rem;
+    padding: 1.5rem;
+}
+
+.register-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.form-row {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.form-row label {
+    font-weight: 600;
+    color: #a0a8c0;
+    font-size: 0.9rem;
+}
+
+.form-row input {
+    background: #1a1f35;
+    border: 1px solid #2f365b;
+    border-radius: 0.6rem;
+    padding: 0.7rem 1rem;
+    color: white;
+    font-size: 0.9rem;
+}
+
+.form-row input:focus {
+    outline: none;
+    border-color: #667eea;
+}
+
+.roles-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    margin-top: 0.3rem;
+}
+
+.role-checkbox {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    background: #1a1f35;
+    padding: 0.4rem 0.8rem;
+    border-radius: 2rem;
+    cursor: pointer;
+}
+
+.role-checkbox input {
+    width: 1rem;
+    height: 1rem;
+    cursor: pointer;
+}
+
+.form-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 0.5rem;
+}
+
+.btn-submit, .btn-cancel {
+    padding: 0.6rem 1.2rem;
+    border-radius: 2rem;
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+    font-size: 0.9rem;
+}
+
+.btn-submit {
+    background: linear-gradient(135deg, #22c55e, #16a34a);
+    color: white;
+}
+
+.btn-cancel {
+    background: #334155;
+    color: white;
+}
+
+.message-container {
+    margin-top: 1rem;
+    padding: 0.7rem;
+    border-radius: 0.6rem;
+    text-align: center;
+    font-size: 0.85rem;
+}
+
+.message-container.success {
+    background: rgba(34, 197, 94, 0.15);
+    border: 1px solid #22c55e;
+    color: #22c55e;
+}
+
+.message-container.error {
+    background: rgba(239, 68, 68, 0.15);
+    border: 1px solid #ef4444;
+    color: #ef4444;
+}
+
+.message-container.loading {
+    color: #667eea;
+}
+
+/* ========== УВЕДОМЛЕНИЯ ========== */
+.notification {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 12px 20px;
+    border-radius: 12px;
+    color: white;
+    z-index: 9999;
+    animation: slideIn 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.9rem;
+}
+
+.notification.success {
+    background: #22c55e;
+}
+
+.notification.error {
+    background: #ef4444;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* ========== ПУСТЫЕ СОСТОЯНИЯ ========== */
+.empty-task, .empty-state {
+    text-align: center;
+    padding: 2rem;
+    color: #5a668a;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 0.8rem;
+}
+
+/* ========== АДАПТИВ ========== */
+@media (max-width: 1000px) {
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .hub-main {
+        padding: 1rem;
+    }
+
+    .welcome-section {
+        padding: 1rem;
+    }
+
+    .welcome-section h1 {
+        font-size: 1.3rem;
+    }
+
+    .stats-grid {
+        gap: 0.8rem;
+    }
+
+    .stat-card {
+        padding: 0.8rem;
+    }
+
+    .stat-icon {
+        width: 40px;
+        height: 40px;
+        font-size: 1.2rem;
+    }
+
+    .stat-value {
+        font-size: 1.3rem;
+    }
+
+    .panel-header h2 {
+        font-size: 1.1rem;
+    }
+
+    .tasks-board {
+        flex-direction: column;
+    }
+
+    .task-column {
+        min-width: auto;
+    }
+
+    .audio-collector {
+        flex-direction: column;
+    }
+
+    .ideas-feed {
+        grid-template-columns: 1fr;
+    }
+
+    .footer-container {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .form-actions {
+        flex-direction: column;
+    }
+
+    .btn-submit, .btn-cancel {
+        width: 100%;
+    }
+
+    .roles-group {
+        gap: 0.5rem;
+    }
+
+    .role-checkbox {
+        font-size: 0.8rem;
+        padding: 0.3rem 0.6rem;
+    }
+}
+
+/* ========== СКРОЛЛ ========== */
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: #0f1222;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #2a345e;
+    border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #3b4ecf;
+}
+
+/* ========== КОМАНДА / УЧАСТНИКИ ========== */
+.team-section {
+    background: rgba(14, 17, 32, 0.7);
+    border-radius: 1.5rem;
+    padding: 1.5rem;
+    margin-top: 2rem;
+    border: 1px solid #2a2f48;
+}
+
+.section-title {
+    font-size: 1.4rem;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    color: #cbd5ff;
+}
+
+.team-roles-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.role-category {
+    background: #0e1120;
+    border-radius: 1rem;
+    overflow: hidden;
+}
+
+.role-header {
+    background: linear-gradient(135deg, #1a1f35, #111521);
+    padding: 0.8rem 1.2rem;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    border-bottom: 1px solid #2a2f48;
+    cursor: pointer;
+}
+
+.role-header h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #a0a8c0;
+}
+
+.role-icon {
+    font-size: 1.2rem;
+}
+
+.role-count {
+    background: #2a345e;
+    padding: 0.2rem 0.6rem;
+    border-radius: 1rem;
+    font-size: 0.7rem;
+    margin-left: 0.5rem;
+}
+
+.members-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    padding: 1rem;
+}
+
+.member-card {
+    background: #161c30;
+    border-radius: 0.8rem;
+    padding: 0.6rem 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    transition: all 0.2s;
+    border: 1px solid #2a2f48;
+}
+
+.member-card:hover {
+    transform: translateY(-2px);
+    border-color: #667eea;
+    background: #1a1f35;
+}
+
+/* Аватарки в списке участников */
+.member-avatar {
+    width: 32px;
+    height: 32px;
+    background: linear-gradient(135deg, #2c3f94, #1a266a);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.9rem;
+    color: #ffda88;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.member-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.member-name {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: white;
+}
+
+.member-status {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin-left: 5px;
+    flex-shrink: 0;
+}
+
+.member-status.online {
+    background: #22c55e;
+    box-shadow: 0 0 6px #22c55e;
+    animation: pulse 2s infinite;
+}
+
+.member-status.offline {
+    background: #64748b;
+    box-shadow: none;
+}
+
+/* ========== СТРОИТЕЛИ И ЗАДАЧИ ========== */
+.builders-list-section,
+.tasks-list-section {
+    background: #0e1120;
+    border-radius: 1.2rem;
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.builders-list-section h3,
+.tasks-list-section h3 {
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+    color: #cbd5ff;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.builders-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1rem;
+}
+
+.builder-card {
+    background: #1a1f35;
+    border-radius: 1rem;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    border: 1px solid #2a2f48;
+    transition: all 0.2s;
+}
+
+.builder-card:hover {
+    transform: translateY(-2px);
+    border-color: #667eea;
+    background: #1f253f;
+}
+
+.builder-avatar {
+    width: 48px;
+    height: 48px;
+    background: linear-gradient(135deg, #2c3f94, #1a266a);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    color: #ffda88;
+    overflow: hidden;
+}
+
+.builder-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.builder-info {
+    flex: 1;
+}
+
+.builder-name {
+    font-weight: 700;
+    font-size: 1rem;
+    color: white;
+    margin-bottom: 0.2rem;
+}
+
+.builder-stats {
+    font-size: 0.7rem;
+    color: #7c8bd6;
+    display: flex;
+    gap: 1rem;
+}
+
+.builder-stats span {
+    display: flex;
+    align-items: center;
+    gap: 0.2rem;
+}
+
+.task-card {
+    background: #1a1f35;
+    border-radius: 0.8rem;
+    padding: 1rem;
+    margin-bottom: 0.8rem;
+    border-left: 3px solid #f59e0b;
+    transition: all 0.2s;
+}
+
+.task-card:hover {
+    transform: translateX(5px);
+    background: #1f253f;
+}
+
+.task-card.completed {
+    border-left-color: #22c55e;
+    opacity: 0.7;
+}
+
+.task-title {
+    font-weight: 700;
+    margin-bottom: 0.3rem;
+    color: white;
+}
+
+.task-assignee {
+    font-size: 0.75rem;
+    color: #9ca9db;
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    margin-bottom: 0.3rem;
+}
+
+.task-priority {
+    font-size: 0.7rem;
+    padding: 0.2rem 0.5rem;
+    border-radius: 0.5rem;
+    display: inline-block;
+}
+
+.priority-HIGH {
+    background: rgba(239, 68, 68, 0.2);
+    color: #f87171;
+}
+
+.priority-MEDIUM {
+    background: rgba(245, 158, 11, 0.2);
+    color: #fbbf24;
+}
+
+.priority-LOW {
+    background: rgba(34, 197, 94, 0.2);
+    color: #4ade80;
+}
+
+.complete-task-btn {
+    background: #22c55e;
+    padding: 4px 10px;
+    border-radius: 0.5rem;
+    color: #f87171;
+    cursor: pointer;
+    font-size: 0.7rem;
+    transition: all 0.2s;
+}
+
+.complete-task-btn:hover {
+    background: #16a34a;
+}
+
+.completed-badge {
+    display: inline-block;
+    margin-top: 0.5rem;
+    font-size: 0.7rem;
+    color: #4ade80;
+}
+
+/* ========== ФИЛЬТРЫ ЗАДАЧ ========== */
+.task-filters {
+    background: #1a1f35;
+    border-radius: 0.8rem;
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.task-filters label {
+    color: #a0a8c0;
+    font-size: 0.85rem;
+}
+
+.filter-select {
+    background: #0e1120;
+    border: 1px solid #2f365b;
+    border-radius: 0.5rem;
+    padding: 0.4rem 0.8rem;
+    color: white;
+    font-size: 0.8rem;
+    cursor: pointer;
+}
+
+.clear-filter-btn {
+    background: #475569;
+    border: none;
+    border-radius: 0.5rem;
+    padding: 0.4rem 1rem;
+    color: white;
+    cursor: pointer;
+    font-size: 0.8rem;
+    transition: all 0.2s;
+}
+
+.clear-filter-btn:hover {
+    background: #334155;
+}
+
+.task-creator {
+    font-size: 0.7rem;
+    color: #8b5cf6;
+    margin: 0.2rem 0;
+}
+
+.task-actions {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+.delete-task-btn {
+    background: rgba(239, 68, 68, 0.15);
+    border: 1px solid #ef4444;
+    padding: 4px 10px;
+    border-radius: 0.5rem;
+    color: #f87171;
+    cursor: pointer;
+    font-size: 0.7rem;
+    transition: all 0.2s;
+}
+
+.delete-task-btn:hover {
+    background: rgba(239, 68, 68, 0.3);
+}
+
+.priority-badge {
+    font-size: 0.7rem;
+    padding: 0.2rem 0.5rem;
+    border-radius: 0.5rem;
+    display: inline-block;
+}
+
+.priority-HIGH {
+    background: rgba(239, 68, 68, 0.2);
+    color: #f87171;
+}
+
+.priority-MEDIUM {
+    background: rgba(245, 158, 11, 0.2);
+    color: #fbbf24;
+}
+
+.priority-LOW {
+    background: rgba(34, 197, 94, 0.2);
+    color: #4ade80;
+}
+/* ========== АККОРДЕОН ДЛЯ ЗАДАЧ ========== */
+.tasks-accordion {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.accordion-item {
+    background: #0e1120;
+    border-radius: 1rem;
+    overflow: hidden;
+    border: 1px solid #2a2f48;
+    transition: all 0.2s;
+}
+
+.accordion-item.expanded {
+    border-color: #667eea;
+}
+
+.accordion-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 1.2rem;
+    background: linear-gradient(135deg, #1a1f35, #111521);
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.accordion-header:hover {
+    background: #1f253f;
+}
+
+.accordion-title {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-weight: 600;
+    color: #cbd5ff;
+}
+
+.accordion-title i {
+    font-size: 1rem;
+}
+
+.accordion-count {
+    background: #2a345e;
+    padding: 0.2rem 0.6rem;
+    border-radius: 1rem;
+    font-size: 0.7rem;
+    font-weight: 500;
+    margin-left: 0.5rem;
+}
+
+.accordion-icon {
+    color: #7c8bd6;
+    transition: transform 0.3s ease;
+    font-size: 0.9rem;
+}
+
+.accordion-body {
+    display: none;
+    padding: 1rem;
+    background: #0e1120;
+    animation: fadeSlide 0.3s ease;
+}
+
+.accordion-item.expanded .accordion-body {
+    display: block;
+}
+
+/* Адаптация task-column внутри аккордеона */
+.accordion-body .task-column {
+    background: transparent;
+    padding: 0;
+    min-width: auto;
+}
+
+.accordion-body .task-card {
+    background: #161c30;
+    margin-bottom: 0.8rem;
+}
+
+.accordion-body .task-card:last-child {
+    margin-bottom: 0;
+}
+
+/* Пустые состояния в аккордеоне */
+.accordion-body .empty-task {
+    text-align: center;
+    padding: 2rem;
+    color: #5a668a;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 0.8rem;
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.4);
+    }
+    70% {
+        box-shadow: 0 0 0 6px rgba(34, 197, 94, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(34, 197, 94, 0);
+    }
+}
+
+.member-actions {
+    display: flex;
+    gap: 0.3rem;
+    margin-left: 0.5rem;
+}
+
+.delete-user-btn {
+    background: rgba(239, 68, 68, 0.15);
+    border: none;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    color: #f87171;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.7rem;
+    transition: all 0.2s;
+}
+
+.delete-user-btn:hover {
+    background: rgba(239, 68, 68, 0.4);
+    transform: scale(1.05);
+}
+
+.loading-spinner {
+    text-align: center;
+    padding: 2rem;
+    color: #7c8bd6;
+}
+
+/* Роли в секции участников */
+.role-icon.admin { color: #f59e0b; }
+.role-icon.builder { color: #f97316; }
+.role-icon.screenwriter { color: #22c55e; }
+.role-icon.voice-actor { color: #8b5cf6; }
+.role-icon.animator { color: #ec4899; }
+.role-icon.user { color: #3b82f6; }
+
+@media (max-width: 768px) {
+    .members-list {
+        justify-content: center;
+    }
+
+    .section-title {
+        font-size: 1.2rem;
+    }
+}
+
+/* ========== УПРАВЛЕНИЕ ПОЛЬЗОВАТЕЛЯМИ ========== */
+.users-management-container {
+    background: #0e1120;
+    border-radius: 1.2rem;
+    padding: 1rem;
+    overflow-x: auto;
+}
+
+.users-management-table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 700px;
+}
+
+.users-management-table th,
+.users-management-table td {
+    text-align: left;
+    padding: 1rem 0.8rem;
+    border-bottom: 1px solid #2a2f48;
+}
+
+.users-management-table th {
+    color: #7c8bd6;
+    font-weight: 600;
+    font-size: 0.85rem;
+}
+
+.user-cell {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+}
+
+.user-avatar-small {
+    width: 32px;
+    height: 32px;
+    background: linear-gradient(135deg, #2c3f94, #1a266a);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    color: #ffda88;
+}
+
+.roles-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+}
+
+.role-badge {
+    font-size: 0.7rem;
+    padding: 0.2rem 0.6rem;
+    border-radius: 1rem;
+    background: #1a1f35;
+    color: #a0a8c0;
+}
+
+.role-badge.admin {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+}
+
+.role-badge.builder {
+    background: #f59e0b;
+    color: #1a1a2e;
+}
+
+.role-badge.screenwriter {
+    background: #22c55e;
+    color: #1a1a2e;
+}
+
+.role-badge.voice_actor {
+    background: #8b5cf6;
+    color: white;
+}
+
+.role-badge.animator {
+    background: #ec4899;
+    color: white;
+}
+
+.role-selector {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.role-select {
+    background: #1a1f35;
+    border: 1px solid #2f365b;
+    border-radius: 0.5rem;
+    padding: 0.4rem 0.6rem;
+    color: white;
+    font-size: 0.8rem;
+}
+
+.add-role-btn {
+    background: #22c55e;
+    border: none;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    color: white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.add-role-btn:hover {
+    background: #16a34a;
+}
+
+.delete-user-table-btn {
+    background: rgba(239, 68, 68, 0.15);
+    border: 1px solid #ef4444;
+    padding: 0.3rem 0.8rem;
+    border-radius: 0.5rem;
+    color: #f87171;
+    cursor: pointer;
+    font-size: 0.7rem;
+}
+
+.delete-user-table-btn:hover {
+    background: rgba(239, 68, 68, 0.3);
+}
+
+.self-hint {
+    font-size: 0.7rem;
+    color: #5a668a;
+}
+
+.refresh-users-btn {
+    background: linear-gradient(135deg, #3b4ecf, #562de0);
+    border: none;
+    padding: 0.5rem 1.2rem;
+    border-radius: 2rem;
+    font-weight: 600;
+    color: white;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.current-user-badge {
+    font-size: 0.6rem;
+    margin-left: 0.3rem;
+    color: #667eea;
+    background: rgba(102, 126, 234, 0.2);
+    padding: 0.1rem 0.3rem;
+    border-radius: 0.5rem;
+}
+
+/* Кнопка удаления роли внутри бейджа */
+.role-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    font-size: 0.7rem;
+    padding: 0.2rem 0.6rem;
+    border-radius: 1rem;
+    background: #1a1f35;
+    color: #a0a8c0;
+}
+
+.remove-role-btn {
+    background: none;
+    border: none;
+    color: inherit;
+    cursor: pointer;
+    font-size: 0.6rem;
+    opacity: 0.7;
+    margin-left: 0.2rem;
+    padding: 0;
+}
+
+.remove-role-btn:hover {
+    opacity: 1;
+    color: #ef4444;
+}
+
+.remove-role-btn-table {
+    background: #ef4444;
+    border: none;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    color: white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.remove-role-btn-table:hover {
+    background: #dc2626;
+}
+
+.role-select-remove {
+    background: #1a1f35;
+    border: 1px solid #2f365b;
+    border-radius: 0.5rem;
+    padding: 0.4rem 0.6rem;
+    color: white;
+    font-size: 0.8rem;
+    min-width: 130px;
+}
+
+.no-roles {
+    color: #5a668a;
+    font-size: 0.7rem;
+    font-style: italic;
+}
+
+/* ========== ЗАЯВКИ НА РЕГИСТРАЦИЮ ========== */
+.requests-container {
+    background: #0e1120;
+    border-radius: 1.2rem;
+    padding: 1rem;
+}
+
+.request-card {
+    background: linear-gradient(135deg, #161c30, #1a1f35);
+    border-radius: 1rem;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    border-left: 4px solid #f59e0b;
+    transition: all 0.2s;
+}
+
+.request-card:hover {
+    transform: translateX(5px);
+    border-left-color: #667eea;
+    background: #1a1f35;
+}
+
+.request-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+}
+
+.request-username {
+    font-weight: 700;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.request-username i {
+    color: #f59e0b;
+}
+
+.request-date {
+    font-size: 0.7rem;
+    color: #7c8bd6;
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+}
+
+.request-actions {
+    display: flex;
+    gap: 0.8rem;
+}
+
+.approve-btn {
+    background: linear-gradient(135deg, #22c55e, #16a34a);
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 0.8rem;
+    color: white;
+    cursor: pointer;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    transition: all 0.2s;
+}
+
+.approve-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(34, 197, 94, 0.3);
+}
+
+.reject-btn {
+    background: linear-gradient(135deg, #ef4444, #dc2626);
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 0.8rem;
+    color: white;
+    cursor: pointer;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    transition: all 0.2s;
+}
+
+.reject-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
+}
+
+.refresh-requests-btn {
+    background: linear-gradient(135deg, #3b4ecf, #562de0);
+    border: none;
+    padding: 0.5rem 1.2rem;
+    border-radius: 2rem;
+    font-weight: 600;
+    color: white;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.2s;
+}
+
+.refresh-requests-btn:hover {
+    transform: scale(1.02);
+    opacity: 0.9;
+}
+
+.stat-value {
+    font-size: 1.2rem;
+    font-weight: 600;
+    line-height: 1.2;
+    white-space: nowrap;
+}
+
+/* ========== АКТЁРЫ ОЗВУЧКИ ========== */
+.voice-actors-layout {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.voice-actors-sidebar {
+    flex: 1;
+    min-width: 280px;
+    background: #0e1120;
+    border-radius: 1.2rem;
+    padding: 1rem;
+    border: 1px solid #2a2f48;
+}
+
+.voice-actors-sidebar h3 {
+    margin-bottom: 1rem;
+    color: #cbd5ff;
+    padding: 10px;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.voice-actors-list-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.voice-actor-card {
+    background: #1a1f35;
+    border-radius: 0.8rem;
+    padding: 0.8rem;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    border: 1px solid #2a2f48;
+    transition: all 0.2s;
+    cursor: pointer;
+}
+
+.voice-actor-card:hover {
+    transform: translateX(4px);
+    border-color: #667eea;
+    background: #1f253f;
+}
+
+.voice-actor-card.active {
+    border-color: #667eea;
+    background: linear-gradient(135deg, #1f253f, #1a1f35);
+}
+
+.voice-actor-avatar {
+    width: 48px;
+    height: 48px;
+    background: linear-gradient(135deg, #2c3f94, #1a266a);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    color: #ffda88;
+    overflow: hidden;
+}
+
+.voice-actor-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.voice-actor-info {
+    flex: 1;
+}
+
+.voice-actor-name {
+    font-weight: 700;
+    color: white;
+    margin-bottom: 0.2rem;
+}
+
+.voice-actor-stats {
+    font-size: 0.7rem;
+    color: #7c8bd6;
+}
+
+.characters-content {
+    flex: 2;
+    min-width: 400px;
+    background: #0e1120;
+    border-radius: 1.2rem;
+    padding: 1rem;
+    border: 1px solid #2a2f48;
+}
+
+.characters-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.characters-header h3 {
+    color: #cbd5ff;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.assign-character-btn, .add-voice-actor-btn {
+    background: linear-gradient(135deg, #3b4ecf, #562de0);
+    border: none;
+    padding: 0.4rem 1rem;
+    border-radius: 2rem;
+    font-weight: 600;
+    color: white;
+    cursor: pointer;
+    transition: 0.2s;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.8rem;
+}
+
+.assign-character-btn:hover, .add-voice-actor-btn:hover {
+    transform: scale(1.02);
+    opacity: 0.9;
+}
+
+.characters-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 1rem;
+}
+
+.character-card {
+    background: #1a1f35;
+    border-radius: 1rem;
+    padding: 1rem;
+    border: 1px solid #2a2f48;
+    transition: all 0.2s;
+    cursor: pointer;
+}
+
+.character-card:hover {
+    transform: translateY(-3px);
+    border-color: #667eea;
+    background: #1f253f;
+}
+
+.character-avatar {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 0.8rem;
+    background: linear-gradient(135deg, #2c3f94, #1a266a);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    color: #ffda88;
+    overflow: hidden;
+}
+
+.character-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.character-name {
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 0.3rem;
+    color: white;
+}
+
+.character-actor {
+    font-size: 0.7rem;
+    text-align: center;
+    color: #7c8bd6;
+    margin-bottom: 0.5rem;
+}
+
+.character-stats {
+    font-size: 0.7rem;
+    text-align: center;
+    color: #a0a8c0;
+    display: flex;
+    justify-content: center;
+    gap: 0.8rem;
+}
+
+/* Модальное окно */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-content {
+    background: #111521;
+    border-radius: 1.5rem;
+    max-width: 600px;
+    width: 90%;
+    max-height: 80vh;
+    overflow-y: auto;
+    border: 1px solid #2a2f48;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid #2a2f48;
+    background: linear-gradient(135deg, #1a1f35, #111521);
+    border-radius: 1.5rem 1.5rem 0 0;
+}
+
+.modal-header h3 {
+    color: #cbd5ff;
+}
+
+.modal-close {
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #7c8bd6;
+    transition: color 0.2s;
+}
+
+.modal-close:hover {
+    color: #ef4444;
+}
+
+.modal-body {
+    padding: 1.5rem;
+}
+
+.character-info-modal {
+    background: #1a1f35;
+    border-radius: 0.8rem;
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.voice-records-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    margin-bottom: 1.5rem;
+}
+
+.voice-record-item {
+    background: #1a1f35;
+    border-radius: 0.8rem;
+    padding: 0.8rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.voice-record-info {
+    flex: 1;
+}
+
+.voice-record-title {
+    font-weight: 600;
+    color: white;
+    margin-bottom: 0.2rem;
+}
+
+.voice-record-description {
+    font-size: 0.7rem;
+    color: #7c8bd6;
+}
+
+.voice-record-audio {
+    margin: 0.5rem 0;
+}
+
+.voice-record-audio audio {
+    max-width: 200px;
+    height: 30px;
+}
+
+.delete-voice-btn {
+    background: rgba(239, 68, 68, 0.15);
+    border: 1px solid #ef4444;
+    padding: 0.3rem 0.6rem;
+    border-radius: 0.5rem;
+    color: #f87171;
+    cursor: pointer;
+    font-size: 0.7rem;
+    transition: all 0.2s;
+}
+
+.delete-voice-btn:hover {
+    background: rgba(239, 68, 68, 0.3);
+}
+
+.add-voice-form {
+    background: #1a1f35;
+    border-radius: 0.8rem;
+    padding: 1rem;
+    margin-top: 1rem;
+}
+
+.add-voice-form h5 {
+    margin-bottom: 0.8rem;
+    color: #cbd5ff;
+}
+
+.form-input, .form-textarea {
+    width: 100%;
+    margin-bottom: 0.8rem;
+    padding: 0.6rem;
+    background: #0e1120;
+    border: 1px solid #2f365b;
+    border-radius: 0.5rem;
+    color: white;
+    font-size: 0.85rem;
+}
+
+.form-textarea {
+    resize: vertical;
+    min-height: 60px;
+}
+
+/* Форма создания персонажа (админ) */
+.modal-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.modal-form select {
+    background: #1a1f35;
+    border: 1px solid #2f365b;
+    border-radius: 0.5rem;
+    padding: 0.6rem;
+    color: white;
+}
+
+.modal-buttons {
+    display: flex;
+    gap: 0.8rem;
+    margin-top: 0.5rem;
+}
+
+.btn-secondary {
+    background: #475569;
+    border: none;
+    padding: 0.6rem 1rem;
+    border-radius: 0.5rem;
+    color: white;
+    cursor: pointer;
+}
+
+.btn-danger {
+    background: rgba(239, 68, 68, 0.15);
+    border: 1px solid #ef4444;
+    padding: 0.6rem 1rem;
+    border-radius: 0.5rem;
+    color: #f87171;
+    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    .voice-actors-layout {
+        flex-direction: column-reverse;
+    }
+
+    .characters-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .characters-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .stat-value {
+        font-size: 0.9rem;
+        white-space: normal;
+    }
+}
+
+@media (max-width: 600px) {
+    .request-card {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .request-actions {
+        width: 100%;
+        justify-content: flex-end;
+    }
+
+    .approve-btn, .reject-btn {
+        flex: 1;
+        justify-content: center;
+    }
+}
+
+.request-badge {
+    background: #ef4444;
+    color: white;
+    font-size: 0.6rem;
+    padding: 0.1rem 0.4rem;
+    border-radius: 1rem;
+    margin-left: 0.3rem;
+    animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.6; }
+}
+
+/* ========== УПРАВЛЕНИЕ ПОЛЬЗОВАТЕЛЯМИ - ОБНОВЛЁННЫЕ СТИЛИ ========== */
+.users-management-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.users-management-table th,
+.users-management-table td {
+    padding: 12px 8px;
+    vertical-align: middle;
+}
+
+.users-management-table th {
+    text-align: center;
+    color: #cbd5ff;
+    font-weight: 600;
+}
+
+.user-cell {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.user-avatar-small {
+    width: 32px;
+    height: 32px;
+    background: linear-gradient(135deg, #2c3f94, #1a266a);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    color: #ffda88;
+    flex-shrink: 0;
+}
+
+.roles-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    justify-content: center;
+}
+
+.role-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 0.7rem;
+    padding: 3px 8px;
+    border-radius: 1rem;
+    background: #1a1f35;
+    color: #a0a8c0;
+}
+
+.role-badge.role-admin {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+}
+
+.role-badge.role-builder {
+    background: #f59e0b;
+    color: #1a1a2e;
+}
+
+.role-badge.role-screenwriter {
+    background: #22c55e;
+    color: #1a1a2e;
+}
+
+.role-badge.role-voice_actor {
+    background: #8b5cf6;
+    color: white;
+}
+
+.role-badge.role-animator {
+    background: #ec4899;
+    color: white;
+}
+
+.remove-role-btn {
+    background: none;
+    border: none;
+    color: inherit;
+    cursor: pointer;
+    font-size: 0.6rem;
+    opacity: 0.7;
+    padding: 0;
+    margin-left: 3px;
+}
+
+.remove-role-btn:hover {
+    opacity: 1;
+    color: #ef4444;
+}
+
+.role-selector {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+}
+
+.role-select, .role-select-remove {
+    min-width: 130px;
+    padding: 6px 8px;
+    border-radius: 6px;
+    background: #1a1f35;
+    border: 1px solid #2f365b;
+    color: white;
+    font-size: 0.8rem;
+}
+
+.role-select:disabled, .role-select-remove:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.add-role-btn, .remove-role-btn-table {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+}
+
+.add-role-btn {
+    background: #22c55e;
+    color: white;
+}
+
+.add-role-btn:hover {
+    background: #16a34a;
+    transform: scale(1.05);
+}
+
+.remove-role-btn-table {
+    background: #ef4444;
+    color: white;
+}
+
+.remove-role-btn-table:hover {
+    background: #dc2626;
+    transform: scale(1.05);
+}
+
+.delete-user-table-btn {
+    background: rgba(239, 68, 68, 0.15);
+    border: 1px solid #ef4444;
+    padding: 5px 12px;
+    border-radius: 6px;
+    color: #f87171;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.delete-user-table-btn:hover {
+    background: rgba(239, 68, 68, 0.3);
+}
+
+.self-hint {
+    color: #5a668a;
+    font-size: 0.7rem;
+}
+
+.current-user-badge {
+    background: rgba(102, 126, 234, 0.2);
+    padding: 2px 6px;
+    border-radius: 12px;
+    font-size: 0.6rem;
+    color: #667eea;
+    margin-left: 5px;
+}
+
+.no-roles {
+    color: #5a668a;
+    font-size: 0.7rem;
+    font-style: italic;
+}
+
+/* ========== КНОПКИ ========== */
+.btn-primary {
+    background: linear-gradient(135deg, #22c55e, #16a34a);
+    border: none;
+    padding: 0.6rem 1.2rem;
+    border-radius: 0.8rem;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(34, 197, 94, 0.4);
+}
+
+.btn-primary:active {
+    transform: translateY(0);
+}
+
+.btn-secondary {
+    background: linear-gradient(135deg, #475569, #334155);
+    border: none;
+    padding: 0.6rem 1.2rem;
+    border-radius: 0.8rem;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+}
+
+.btn-secondary:hover {
+    background: linear-gradient(135deg, #334155, #1e293b);
+    transform: translateY(-2px);
+}
+
+.btn-danger {
+    background: linear-gradient(135deg, #ef4444, #dc2626);
+    border: none;
+    padding: 0.6rem 1.2rem;
+    border-radius: 0.8rem;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+}
+
+.btn-danger:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(239, 68, 68, 0.4);
+}
+
+.modal-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: flex-end;
+    margin-top: 1rem;
+}
+
+.modal-close-btn {
+    background: none;
+    border: none;
+    color: #7c8bd6;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: color 0.2s;
+    padding: 0;
+    line-height: 1;
+}
+
+/* ========== КРАСИВАЯ ФОРМА ЗАГРУЗКИ АУДИО ========== */
+.audio-upload-area {
+    margin-bottom: 1rem;
+}
+
+.audio-upload-label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    background: linear-gradient(135deg, #3b4ecf, #562de0);
+    padding: 0.8rem;
+    border-radius: 0.8rem;
+    color: white;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-weight: 500;
+}
+
+.audio-upload-label:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(59, 78, 207, 0.4);
+}
+
+.audio-file-name {
+    margin-top: 0.5rem;
+    padding: 0.5rem;
+    background: rgba(34, 197, 94, 0.15);
+    border-radius: 0.5rem;
+    font-size: 0.75rem;
+    color: #4ade80;
+    text-align: center;
+}
+
+.character-info-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.8rem;
+    margin-bottom: 0.8rem;
+}
+
+.character-info-row i {
+    color: #667eea;
+    margin-top: 0.2rem;
+}
+
+.character-info-row p {
+    flex: 1;
+    color: #a0a8c0;
+    font-size: 0.85rem;
+}
+
+#adminCharacterActions {
+    display: flex;
+    gap: 0.8rem;
+    flex-wrap: wrap;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid #2a2f48;
+}
+
+.modal-close-btn:hover {
+    color: #ef4444;
+}
+
+/* Плашка "Все персонажи" */
+.all-characters-plate {
+    background: linear-gradient(135deg, #1a1f35, #111521);
+    border-radius: 0.8rem;
+    padding: 0.8rem;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    margin-top: 1rem;
+    border: 1px solid #2a2f48;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.all-characters-plate:hover {
+    transform: translateX(4px);
+    border-color: #667eea;
+    background: #1f253f;
+}
+
+.all-characters-icon {
+    width: 48px;
+    height: 48px;
+    background: linear-gradient(135deg, #2c3f94, #1a266a);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    color: #ffda88;
+}
+
+.all-characters-info {
+    flex: 1;
+}
+
+.all-characters-title {
+    font-weight: 700;
+    color: white;
+    margin-bottom: 0.2rem;
+}
+
+.all-characters-count {
+    font-size: 0.7rem;
+    color: #7c8bd6;
+}
+/* Загрузка изображения персонажа */
+.avatar-upload-area {
+    margin-bottom: 1rem;
+}
+
+.avatar-upload-label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    background: linear-gradient(135deg, #3b4ecf, #562de0);
+    padding: 0.8rem;
+    border-radius: 0.8rem;
+    color: white;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-weight: 500;
+}
+
+.avatar-upload-label:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(59, 78, 207, 0.4);
+}
+
+.character-image-preview {
+    position: relative;
+    margin-top: 0.5rem;
+    display: inline-block;
+}
+
+.character-image-preview img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 12px;
+    border: 2px solid #667eea;
+}
+
+.remove-image-btn {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    width: 20px;
+    height: 20px;
+    background: #ef4444;
+    border: none;
+    border-radius: 50%;
+    color: white;
+    font-size: 0.7rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.remove-image-btn:hover {
+    background: #dc2626;
+}
+
+/* ========== СЦЕНАРИИ ========== */
+.scripts-layout {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.scripts-sidebar {
+    flex: 1;
+    min-width: 280px;
+    background: #0e1120;
+    border-radius: 1.2rem;
+    padding: 1rem;
+    border: 1px solid #2a2f48;
+}
+
+.scripts-sidebar h3 {
+    margin-bottom: 1rem;
+    color: #cbd5ff;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.screenwriters-list-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.screenwriter-card {
+    background: #1a1f35;
+    border-radius: 0.8rem;
+    padding: 0.8rem;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    border: 1px solid #2a2f48;
+    transition: all 0.2s;
+    cursor: pointer;
+}
+
+.screenwriter-card:hover {
+    transform: translateX(4px);
+    border-color: #667eea;
+    background: #1f253f;
+}
+
+.screenwriter-card.active {
+    border-color: #667eea;
+    background: linear-gradient(135deg, #1f253f, #1a1f35);
+}
+
+.screenwriter-avatar {
+    width: 48px;
+    height: 48px;
+    background: linear-gradient(135deg, #2c3f94, #1a266a);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    color: #ffda88;
+    overflow: hidden;
+}
+
+.screenwriter-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.screenwriter-info {
+    flex: 1;
+}
+
+.screenwriter-name {
+    font-weight: 700;
+    color: white;
+    margin-bottom: 0.2rem;
+}
+
+.screenwriter-stats {
+    font-size: 0.7rem;
+    color: #7c8bd6;
+}
+
+.scripts-content {
+    flex: 2;
+    min-width: 400px;
+    background: #0e1120;
+    border-radius: 1.2rem;
+    padding: 1rem;
+    border: 1px solid #2a2f48;
+}
+
+.scripts-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.scripts-header h3 {
+    color: #cbd5ff;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.add-script-btn {
+    background: linear-gradient(135deg, #3b4ecf, #562de0);
+    border: none;
+    padding: 0.4rem 1rem;
+    border-radius: 2rem;
+    font-weight: 600;
+    color: white;
+    cursor: pointer;
+    transition: 0.2s;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.8rem;
+}
+
+.scripts-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.script-card {
+    background: #1a1f35;
+    border-radius: 0.8rem;
+    padding: 1rem;
+    border: 1px solid #2a2f48;
+    transition: all 0.2s;
+    cursor: pointer;
+}
+
+.script-card:hover {
+    transform: translateX(5px);
+    border-color: #667eea;
+    background: #1f253f;
+}
+
+.script-title {
+    font-weight: 700;
+    color: white;
+    margin-bottom: 0.3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.script-description {
+    font-size: 0.75rem;
+    color: #7c8bd6;
+    margin-bottom: 0.5rem;
+}
+
+.script-meta {
+    font-size: 0.7rem;
+    color: #a0a8c0;
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.open-script-btn {
+    background: linear-gradient(135deg, #22c55e, #16a34a);
+    border: none;
+    padding: 0.2rem 0.6rem;
+    border-radius: 0.5rem;
+    color: white;
+    cursor: pointer;
+    font-size: 0.7rem;
+}
+
+.script-actions {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.delete-script-btn {
+    background: rgba(239, 68, 68, 0.15);
+    border: 1px solid #ef4444;
+    padding: 0.2rem 0.5rem;
+    border-radius: 0.5rem;
+    color: #f87171;
+    cursor: pointer;
+    font-size: 0.7rem;
+    transition: all 0.2s;
+}
+
+.delete-script-btn:hover {
+    background: rgba(239, 68, 68, 0.3);
+    transform: scale(1.05);
+}
+
+/* ========== MULTI-SELECT ЧЕКБОКСЫ ========== */
+.multi-select-container {
+    background: #1a1f35;
+    border: 1px solid #2f365b;
+    border-radius: 0.8rem;
+    padding: 0.8rem;
+    margin-bottom: 1rem;
+    max-height: 150px;
+    overflow-y: auto;
+}
+
+.checkboxes-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.checkbox-item {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.4rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.checkbox-item:hover {
+    background: rgba(102, 126, 234, 0.15);
+}
+
+.checkbox-item input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+    accent-color: #667eea;
+}
+
+.checkbox-item label {
+    flex: 1;
+    cursor: pointer;
+    color: #eef2ff;
+    font-size: 0.85rem;
+}
+
+.checkbox-item .checkbox-badge {
+    font-size: 0.7rem;
+    color: #7c8bd6;
+    background: #0e1120;
+    padding: 0.1rem 0.4rem;
+    border-radius: 1rem;
+}
+
+.modal-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: flex-end;
+    margin-top: 1rem;
+}
+
+.modal-close-btn {
+    background: none;
+    border: none;
+    color: #7c8bd6;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: color 0.2s;
+    padding: 0;
+    line-height: 1;
+}
+
+.modal-close-btn:hover {
+    color: #ef4444;
+}
+.script-title {
+    font-weight: 700;
+    color: white;
+    margin-bottom: 0.3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.script-actions {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.open-script-btn {
+    background: linear-gradient(135deg, #22c55e, #16a34a);
+    border: none;
+    padding: 0.2rem 0.6rem;
+    border-radius: 0.5rem;
+    color: white;
+    cursor: pointer;
+    font-size: 0.7rem;
+    transition: all 0.2s;
+}
+
+.open-script-btn:hover {
+    transform: scale(1.05);
+}
+
+.delete-script-btn {
+    background: rgba(239, 68, 68, 0.15);
+    border: 1px solid #ef4444;
+    padding: 0.2rem 0.5rem;
+    border-radius: 0.5rem;
+    color: #f87171;
+    cursor: pointer;
+    font-size: 0.7rem;
+    transition: all 0.2s;
+}
+
+.delete-script-btn:hover {
+    background: rgba(239, 68, 68, 0.3);
+    transform: scale(1.05);
+}
+
+.edit-script-btn {
+    background: rgba(59, 78, 207, 0.15);
+    border: 1px solid #3b4ecf;
+    padding: 0.2rem 0.5rem;
+    border-radius: 0.5rem;
+    color: #8b9dff;
+    cursor: pointer;
+    font-size: 0.7rem;
+    transition: all 0.2s;
+}
+
+.edit-script-btn:hover {
+    background: rgba(59, 78, 207, 0.3);
+    transform: scale(1.05);
+}
+
+/* ========== ИДЕИ ========== */
+.idea-buttons {
+    display: flex;
+    gap: 0.8rem;
+}
+
+.new-idea-btn.site-idea {
+    background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+}
+
+.idea-tabs {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+    border-bottom: 1px solid #2a2f48;
+    padding-bottom: 0.5rem;
+}
+
+.idea-tab {
+    background: transparent;
+    border: none;
+    padding: 0.5rem 1rem;
+    color: #a0a8c0;
+    font-size: 0.85rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+    border-radius: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.idea-tab:hover {
+    background: rgba(102, 126, 234, 0.15);
+    color: white;
+}
+
+.idea-tab.active {
+    color: white;
+    border-bottom: 2px solid #667eea;
+}
+
+.pending-badge {
+    background: #ef4444;
+    color: white;
+    font-size: 0.6rem;
+    padding: 0.1rem 0.4rem;
+    border-radius: 1rem;
+    margin-left: 0.3rem;
+}
+
+.ideas-feed {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 1.2rem;
+}
+
+.idea-card {
+    background: linear-gradient(135deg, #1a1f35, #111521);
+    border-radius: 1rem;
+    padding: 1.2rem;
+    border: 1px solid #2a2f48;
+    transition: all 0.2s;
+    position: relative;
+}
+
+.idea-card:hover {
+    transform: translateY(-3px);
+    border-color: #667eea;
+}
+
+.idea-card.pending {
+    border-left: 4px solid #f59e0b;
+}
+
+.idea-card.approved {
+    border-left: 4px solid #22c55e;
+}
+
+.idea-card.rejected {
+    border-left: 4px solid #ef4444;
+    opacity: 0.6;
+}
+
+.idea-title {
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: white;
+    padding-right: 60px;
+}
+
+.idea-description {
+    font-size: 0.8rem;
+    color: #a0a8c0;
+    margin-bottom: 0.8rem;
+    line-height: 1.4;
+}
+
+.idea-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.7rem;
+    color: #7c8bd6;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.idea-author {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+}
+
+.idea-likes {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.idea-likes:hover {
+    color: #ef4444;
+}
+
+.idea-likes.liked {
+    color: #ef4444;
+}
+
+.idea-status {
+    font-size: 0.6rem;
+    padding: 0.2rem 0.5rem;
+    border-radius: 1rem;
+}
+
+.idea-status.pending {
+    background: rgba(245, 158, 11, 0.2);
+    color: #fbbf24;
+}
+
+.idea-status.approved {
+    background: rgba(34, 197, 94, 0.2);
+    color: #4ade80;
+}
+
+.idea-status.rejected {
+    background: rgba(239, 68, 68, 0.2);
+    color: #f87171;
+}
+
+.idea-actions {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    display: flex;
+    gap: 0.3rem;
+}
+
+.approve-idea-btn, .reject-idea-btn, .delete-idea-btn {
+    background: rgba(255, 255, 255, 0.05);
+    border: none;
+    width: 28px;
+    height: 28px;
+    border-radius: 0.5rem;
+    color: #a0a8c0;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.approve-idea-btn:hover {
+    background: rgba(34, 197, 94, 0.2);
+    color: #4ade80;
+}
+
+.reject-idea-btn:hover {
+    background: rgba(239, 68, 68, 0.2);
+    color: #f87171;
+}
+
+.delete-idea-btn:hover {
+    background: rgba(239, 68, 68, 0.2);
+    color: #f87171;
+}
+
+@media (max-width: 768px) {
+    .ideas-feed {
+        grid-template-columns: 1fr;
+    }
+
+    .idea-buttons {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .idea-tabs {
+        flex-wrap: wrap;
+    }
+}
+
+.idea-likes {
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.idea-likes:hover {
+    transform: scale(1.05);
+}
+
+.idea-likes.liked {
+    color: #ef4444;
+}
+
+.idea-likes.liked i {
+    animation: heartBeat 0.3s ease;
+}
+
+/* ========== КНОПКИ МОДЕРАЦИИ ИДЕЙ ========== */
+.idea-actions {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    display: flex;
+    gap: 0.3rem;
+}
+
+.approve-idea-btn, .reject-idea-btn, .delete-idea-btn {
+    background: rgba(255, 255, 255, 0.05);
+    border: none;
+    width: 32px;
+    height: 32px;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.approve-idea-btn {
+    background: rgba(34, 197, 94, 0.15);
+    border: 1px solid #22c55e;
+    color: #4ade80;
+}
+
+.approve-idea-btn:hover {
+    background: rgba(34, 197, 94, 0.3);
+    transform: scale(1.05);
+}
+
+.reject-idea-btn {
+    background: rgba(239, 68, 68, 0.15);
+    border: 1px solid #ef4444;
+    color: #f87171;
+}
+
+.reject-idea-btn:hover {
+    background: rgba(239, 68, 68, 0.3);
+    transform: scale(1.05);
+}
+
+.delete-idea-btn {
+    background: rgba(239, 68, 68, 0.15);
+    border: 1px solid #ef4444;
+    color: #f87171;
+}
+
+.delete-idea-btn:hover {
+    background: rgba(239, 68, 68, 0.3);
+    transform: scale(1.05);
+}
+
+/* Позиционирование карточки идеи для абсолютных кнопок */
+.idea-card {
+    position: relative;
+}
+
+/* Стиль для иконки типа идеи */
+.idea-type-icon {
+    display: inline-block;
+    margin-right: 0.5rem;
+}
+
+/* Тултип при наведении */
+.idea-likes, .idea-actions button, .idea-type-icon {
+    cursor: pointer;
+}
+
+[title] {
+    position: relative;
+}
+
+/* Плашка типа идеи */
+.idea-type-plate {
+    display: inline-block;
+    font-size: 0.7rem;
+    padding: 0.25rem 0.8rem;
+    border-radius: 1rem;
+    margin-bottom: 0.8rem;
+    font-weight: 500;
+}
+
+.idea-type-plate.type-build {
+    background: rgba(245, 158, 11, 0.2);
+    color: #fbbf24;
+    border: 1px solid rgba(245, 158, 11, 0.3);
+}
+
+.idea-type-plate.type-site {
+    background: rgba(139, 92, 246, 0.2);
+    color: #a78bfa;
+    border: 1px solid rgba(139, 92, 246, 0.3);
+}
+
+/* Название идеи */
+.idea-title {
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: white;
+    word-break: break-word;
+}
+
+@keyframes heartBeat {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.3); }
+    100% { transform: scale(1); }
+}
+
+
+/* Адаптив для мобильных */
+@media (max-width: 900px) {
+    .users-management-table {
+        min-width: 700px;
+    }
+}

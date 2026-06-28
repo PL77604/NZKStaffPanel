@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<div th:fragment="header">
+    <header class="hub-header">
+        <div class="header-container">
+            <div class="logo-block">
+                <a href="/hub" class="logo-link">
+                    <div class="logo-icon">
+                        <i class="fas fa-cube"></i>
+                    </div>
+                    <div class="logo-text">
+                        <span class="logo-nzk">NZK</span>
+                        <span class="logo-sub">Staff Hub</span>
+                    </div>
+                </a>
+            </div>
+
+            <nav class="hub-nav">
+                <a href="/hub" class="nav-tab" th:classappend="${currentPage == 'hub' ? 'active' : ''}" data-tab="dashboard">
+                    <i class="fas fa-chalkboard-user"></i>
+                    <span>Обзор</span>
+                </a>
+                <a href="/hub#builders" class="nav-tab" data-tab="builders">
+                    <i class="fas fa-hard-hat"></i>
+                    <span>Строители</span>
+                </a>
+                <a href="/hub#voice-actors" class="nav-tab" data-tab="voice-actors">
+                    <i class="fas fa-microphone-alt"></i>
+                    <span>Актёры</span>
+                </a>
+                <a href="/hub#audio" class="nav-tab" data-tab="scripts">
+                    <i class="fas fa-scroll"></i>
+                    <span>Сценарии</span>
+                </a>
+                <a href="/hub#ideas" class="nav-tab" data-tab="ideas">
+                    <i class="fas fa-lightbulb"></i>
+                    <span>Идеи</span>
+                </a>
+                <a th:if="${isAdmin}" href="/hub#registration-requests" class="nav-tab admin-only" data-tab="registration-requests" style="display: none;">
+                    <i class="fas fa-clipboard-list"></i>
+                    <span>Заявки</span>
+                    <span class="request-badge" id="requestsBadge" style="display: none;">!</span>
+                </a>
+                <a th:if="${isAdmin}" href="/hub#users-management" class="nav-tab admin-only" data-tab="users-management" style="display: none;">
+                    <i class="fas fa-users-gear"></i>
+                    <span>Управление</span>
+                </a>
+            </nav>
+
+            <div class="user-shortcut">
+                <a href="/profile" class="user-avatar-link">
+                    <div class="user-avatar" id="headerAvatar">
+                        <i class="fas fa-user-astronaut"></i>
+                    </div>
+                </a>
+                <div class="user-meta">
+                    <a href="/profile" class="user-name-link" th:text="${username}">Admin</a>
+                    <span class="user-role" id="userRoleSpan">Сотрудник</span>
+                </div>
+                <form th:action="@{/logout}" method="post" style="margin: 0; display: inline;">
+                    <button type="submit" class="logout-icon-btn" title="Выйти">
+                        <i class="fas fa-sign-out-alt"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </header>
+</div>
+</html>
