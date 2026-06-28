@@ -37,7 +37,6 @@ public class NzkStuffPanelApplication {
 				admin.setRoles(Set.of(Role.ROLE_ADMIN, Role.ROLE_USER));
 				userRepository.save(admin);
 			}
-
 		};
 	}
 }
