@@ -37,7 +37,7 @@ public class SecurityConfig {
                         .requestMatchers("/api/auth/**").permitAll()
                         // 👇 ДОБАВЬ ЭТО!
                         .requestMatchers("/profile/**").authenticated()  // <-- Явно защищаем профиль
-                        .requestMatchers("/hub/**").authenticated()      // <-- И хаб
+                        .requestMatchers("/hub_nzk/**").authenticated()      // <-- И хаб
                         .requestMatchers("/api/current-user").authenticated()
                         // Админка
                         .requestMatchers("/admin/**").hasRole("ADMIN")
